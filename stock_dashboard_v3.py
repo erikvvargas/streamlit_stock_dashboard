@@ -98,9 +98,8 @@ class PortfolioApp:
         self.sub_date_2 = datetime.datetime(2024, 7, 1)
         
         # Sidebar date selector
-        with st.sidebar:
-            st.markdown("This dashboard was created at the request of a client to streamline report generation for their company's stock portfolio. Dates and stocks have been changed at the request of the client.")
-            self.selected_date = st.date_input("Select a date", datetime.date.today())
+        
+        self.selected_date = st.sidebar.date_input("Select a date", datetime.date.today())
             
         
         self.last_friday = (self.selected_date - datetime.timedelta(days=self.selected_date.weekday()) + datetime.timedelta(days=4, weeks=-1))
@@ -199,6 +198,7 @@ class PortfolioApp:
 
     def run(self):
         st.title("A Stock Portfolio App")
+        st.markdown("This dashboard was created at the request of a client to streamline report generation for their company's stock portfolio. Dates and stocks have been changed at the request of the client.")
         st.markdown("### Current Week Performance")
         st.write(f"Sharpe Ratio (Current Portfolio): {self.portfolio_3.calculate_sharpe_ratio():.2f}")
         st.write(f"Standard Deviation (Current Portfolio): {self.portfolio_3.calculate_std_dev():.2f}")
