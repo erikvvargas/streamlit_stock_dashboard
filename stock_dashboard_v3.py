@@ -98,7 +98,8 @@ class PortfolioApp:
         self.sub_date_2 = datetime.datetime(2024, 7, 1)
         
         # Sidebar date selector
-        self.selected_date = st.sidebar.date_input("Select a date", datetime.date.today())
+        with st.sidebar:
+            self.selected_date = st.date_input("Select a date", datetime.date.today())
         
         self.last_friday = (self.selected_date - datetime.timedelta(days=self.selected_date.weekday()) + datetime.timedelta(days=4, weeks=-1))
         self.this_friday = (self.selected_date - datetime.timedelta(days=self.selected_date.weekday()) + datetime.timedelta(days=4, weeks=0))
