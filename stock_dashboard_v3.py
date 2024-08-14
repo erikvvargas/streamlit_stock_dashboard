@@ -99,7 +99,9 @@ class PortfolioApp:
         
         # Sidebar date selector
         with st.sidebar:
+            st.markdown("This dashboard was created at the request of a client to streamline report generation for their company's stock portfolio. Dates and stocks have been changed at the request of the client.")
             self.selected_date = st.date_input("Select a date", datetime.date.today())
+            
         
         self.last_friday = (self.selected_date - datetime.timedelta(days=self.selected_date.weekday()) + datetime.timedelta(days=4, weeks=-1))
         self.this_friday = (self.selected_date - datetime.timedelta(days=self.selected_date.weekday()) + datetime.timedelta(days=4, weeks=0))
