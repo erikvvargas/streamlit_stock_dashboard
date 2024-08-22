@@ -220,10 +220,10 @@ class PortfolioApp:
             cumulative_returns = pd.DataFrame(cumulative_returns)
             weekly_returns = (self.sp_and_nasdaq.data.iloc[-1] - self.sp_and_nasdaq.data.loc[str(self.last_friday)]) / self.sp_and_nasdaq.data.loc[str(self.last_friday)]
             performance_table = pd.concat([weekly_returns * 100], axis=1, keys=['Weekly Return %'])
-            st.dataframe(weekly_returns.style.applymap(Plotter.highlight_max), width=400)
+            st.dataframe(performance_table.style.applymap(Plotter.highlight_max), width=400)
 
             # Plot current week's performance of S&P500 and NASDAQ
-            st.line_chart(current_week_data)
+            st.line_chart(weekly_returns)
 
         st.header("Year-to-Date Performance Metrics")
         
