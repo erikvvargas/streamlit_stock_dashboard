@@ -223,7 +223,7 @@ class PortfolioApp:
             st.dataframe(performance_table.style.applymap(Plotter.highlight_max), width=400)
 
             # Plot current week's performance of S&P500 and NASDAQ
-            st.line_chart(performance_table)
+            st.line_chart(cumulative_returns)
 
         st.header("Year-to-Date Performance Metrics")
         
